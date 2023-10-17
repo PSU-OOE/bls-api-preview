@@ -1,0 +1,41 @@
+name: 'Publish release'
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm install --omit=dev
+        env:
+         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - run: zip -r ../bls-aws-artifact.zip *
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Placeholder for ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ../bls-aws-artifact.zip
+          asset_name: bls-aws-artifact.zip
+          asset_content_type: application/zip
