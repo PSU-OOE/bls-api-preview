@@ -1,5 +1,5 @@
 {
-  "name": "bls",
+  "name": "bls-api-preview",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1295.0",
+    "aws-sdk": "^2.1474.0",
     "xlsx": "^0.18.5"
   }
 }
