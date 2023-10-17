@@ -7,7 +7,7 @@ exports.handler = async (event) => {
   const program_code = event.queryStringParameters.program_code;
 
   // Fetch the excel file from the appropriate S3 bucket.
-  const file = await s3.getObject({ Bucket: 'worldcampus-bls-api/' + environment, Key: 'bls-data.xlsx' }).promise();
+  const file = await s3.getObject({ Bucket: 'bls-api-preview/' + environment, Key: 'bls-data.xlsx' }).promise();
 
   // Read all data from the excel file.
   const workbook = xlsx.read(file.Body);
