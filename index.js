@@ -2,6 +2,13 @@ const aws = require('aws-sdk');
 const s3 = new aws.S3({ apiVersion: '2006-03-01' });
 const xlsx = require('xlsx');
 
+exports.handler = async function(event, context) {
+  console.log("ENVIRONMENT VARIABLES\n" + JSON.stringify(process.env, null, 2))
+  console.info("EVENT\n" + JSON.stringify(event, null, 2))
+  console.warn("Event not processed.")
+  return context.logStreamName
+}
+
 exports.handler = async (event) => {
   const environment = event.queryStringParameters.environment;
   const program_code = event.queryStringParameters.program_code;
