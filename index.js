@@ -3,18 +3,18 @@ const s3 = new aws.S3({ apiVersion: '2006-03-01' });
 const xlsx = require('xlsx');
 
 exports.handler = async (event) => {
-  // const environment = event.queryStringParameters.environment;
-  // // const program_code = event.queryStringParameters.program_code;
+  const environment = event.queryStringParameters.environment;
+  // const program_code = event.queryStringParameters.program_code;
 
-  // // Fetch the excel file from the appropriate S3 bucket.
-  // const file = await s3.getObject({ Bucket: 'worldcampus-bls-api/' + environment, Key: 'bls-data.xlsx' }).promise();
+  // Fetch the excel file from the appropriate S3 bucket.
+  const file = await s3.getObject({ Bucket: 'worldcampus-bls-api/' + environment, Key: 'bls-data.xlsx' }).promise();
 
-  // // Read all data from the excel file.
-  // const workbook = xlsx.read(file.Body);
+  // Read all data from the excel file.
+  const workbook = xlsx.read(file.Body);
 
-  // // Get the individual sheets for each data source.
-  // const all_job_outlooks = xlsx.utils.sheet_to_json(workbook.Sheets['Employment']);
-  // const all_job_titles = xlsx.utils.sheet_to_json(workbook.Sheets['Job Titles']);
+  // Get the individual sheets for each data source.
+  const all_job_outlooks = xlsx.utils.sheet_to_json(workbook.Sheets['Employment']);
+  const all_job_titles = xlsx.utils.sheet_to_json(workbook.Sheets['Job Titles']);
 
   // Remove all data except the program we're looking for.
   // const filtered_job_outlooks = all_job_outlooks.filter(row => row.prospect_code === program_code);
