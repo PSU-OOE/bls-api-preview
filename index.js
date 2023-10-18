@@ -4,7 +4,7 @@ const xlsx = require('xlsx');
 
 exports.handler = async (event) => {
   const environment = event.queryStringParameters.environment;
-  const program_code = event.queryStringParameters.program_code;
+  // const program_code = event.queryStringParameters.program_code;
 
   // Fetch the excel file from the appropriate S3 bucket.
   const file = await s3.getObject({ Bucket: 'worldcampus-bls-api/' + environment, Key: 'bls-data.xlsx' }).promise();
