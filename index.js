@@ -34,7 +34,10 @@ exports.handler = async (event) => {
 
   return {
     statusCode: 200,
-    body: ""
+    body: {
+      job_outlooks: all_job_outlooks,
+      job_titles: all_job_titles,
+    }
   };
 
 };
