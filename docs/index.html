@@ -1,1 +1,57 @@
-<html><h1>Hello</h1></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BLS Data Diagnostics</title>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <a id="downloadAnchorElem" style="display:none"></a>
+    <h1>BLS Data</h1>
+    <!-- <table id="producttable">
+        <thead>
+          <tr>
+            <td>UPC_Code</td>
+            <td>Product_Name</td>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <template id="productrow">
+        <tr>
+          <td class="record"></td>
+          <td></td>
+        </tr>
+      </template> -->
+    <div id="bls-data-container">
+      
+      
+    </div>
+    <template id="program-template">
+      <!-- for each program -->
+      <h2><!-- program title --></h2>
+      <h3>Job Titles with this Degree</h3>
+      <!-- if there are job titles -->
+      <ul>
+        <!-- for each job title -->
+        <li><!-- job title --></li>
+        <!-- end for each -->
+      </ul>
+      <!-- else -->
+      <p>No data</p>
+      <!-- end if -->
+      <!-- end for each -->
+      <h3>Employment Outlook for Occupational Fields Related to This Degree</h3>
+      <!-- if there are job titles -->
+      <ul>
+        <!-- for each employment outlook -->
+        <li><!-- employment outlook tile --></li>
+        <!-- end for each -->
+      </ul>
+      <!-- else -->
+      <p>No data</p>
+      <!-- end if -->
+    </template>
+  </body>
+</html>
