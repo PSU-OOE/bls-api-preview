@@ -1,57 +1,58 @@
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>BLS Data Diagnostics</title>
-    <script src="index.js"></script>
-  </head>
-  <body>
-    <a id="downloadAnchorElem" style="display:none"></a>
-    <h1>BLS Data</h1>
-    <!-- <table id="producttable">
-        <thead>
-          <tr>
-            <td>UPC_Code</td>
-            <td>Product_Name</td>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
 
-      <template id="productrow">
-        <tr>
-          <td class="record"></td>
-          <td></td>
-        </tr>
-      </template> -->
-    <div id="bls-data-container">
-      
-      
-    </div>
-    <template id="program-template">
-      <!-- for each program -->
-      <h2><!-- program title --></h2>
+<head>
+  <meta charset="utf-8" />
+  <title>BLS Data Diagnostics</title>
+  <!-- <script href="styles.scss" rel="stylesheet"></script> -->
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <h1>BLS Data</h1>
+  <div id="bls-data-container">
+  </div>
+  <template id="program-template">
+    <h2 class="program-name"></h2>
+    <div class="career-info">
       <h3>Job Titles with this Degree</h3>
-      <!-- if there are job titles -->
-      <ul>
-        <!-- for each job title -->
-        <li><!-- job title --></li>
-        <!-- end for each -->
-      </ul>
-      <!-- else -->
-      <p>No data</p>
-      <!-- end if -->
-      <!-- end for each -->
+      <div class="job-titles"></div>
       <h3>Employment Outlook for Occupational Fields Related to This Degree</h3>
-      <!-- if there are job titles -->
-      <ul>
-        <!-- for each employment outlook -->
-        <li><!-- employment outlook tile --></li>
-        <!-- end for each -->
-      </ul>
-      <!-- else -->
-      <p>No data</p>
-      <!-- end if -->
-    </template>
-  </body>
+      <div class="job-outlooks"></div>
+    </div>
+  </template>
+  <template id="outlook-template">
+    <div class="outlook">
+      <span class="outlook__title"></span>
+      <div class="outlook__employment">
+        <div class="outlook__employment-growth">
+          <div class="outlook__employment-delta"><span class="outlook__employment-percentage"></span></div>
+          <div></div>
+        </div>
+        <div class="outlook__employment-total">
+          <div class="outlook__employment-total-number"></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template id="">
+    <div class="outlook">
+      <span class="text text--height-snug text--weight-bold"></span>
+      <div class="outlook__employment">
+        <div class="outlook__employment-growth">
+          <div class="outlook__employment-delta">
+            <span class="outlook__employment-percentage"></span>
+          </div>
+          <div class="text text--size-xsmall text--height-xsnug">employment growth (10&nbsp;years)</div>
+        </div>
+        <div class="outlook__employment-total">
+          <div class="outlook__employment-total-number"></div>
+          <div class="text text--size-xsmall text--height-xsnug">total employment</div>
+        </div>
+      </div>
+    </div>
+
+  </template>
+</body>
+
 </html>
