@@ -11,3 +11,6 @@ This repository provides an ETL process for a lambda function.
 7. Optionally edit the Event JSON and click the `Test` button, confirm expectations
 8. If testing passes, navigate to the `Versions` tab
 9. Click `Publish new version` to make the new code live
+
+## BLS Data Preview
+(https://psu-ooe.github.io/bls-api-preview/)
