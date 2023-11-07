@@ -71,28 +71,35 @@ function generatePreview() {
     // Add job titles.
     let jobTitlesHTML = "";
     if (program.jobTitles.length !== 0) {
-      jobTitlesHTML += "<ul>";
+      jobTitlesHTML += "<ul class=\"career-info__job-titles-list column--two\">";
       for (jobTitle of program.jobTitles) {
-        jobTitlesHTML += "<li>" + jobTitle + "</li>";
+        jobTitlesHTML += "<li class=\"career-info__job-titles-item text text--weight-semibold\">" + jobTitle + "</li>";
       }
       jobTitlesHTML += "</ul>";
     } else {
       jobTitlesHTML += "<p>No data</p>";
     }
-    pClone.querySelector(".job-titles").innerHTML = jobTitlesHTML;
+    pClone.querySelector(".career-info__job-titles").querySelector(".wysiwyg").innerHTML = jobTitlesHTML;
 
     // Add job outlooks.
     if (program.jobOutlooks.length !== 0) {
       for (jobOutlook of program.jobOutlooks) {
         let oClone = outlookTemplate.content.cloneNode(true);
         oClone.querySelector(".outlook__title").innerHTML = jobOutlook.occ_title;
-        // TODO: Add classing for positive/negative employment change.
-        oClone.querySelector(".outlook__employment-percentage").innerHTML = (jobOutlook.employment_change * 100) + "%";
+        // TODO: Find css for this...
+        if (jobOutlook.employment_change < 0) {
+          oClone.querySelector(".outlook__employment-delta").classList.add(".outlook__employment-delta--negative");
+        } else {
+          oClone.querySelector(".outlook__employment-delta").classList.add(".outlook__employment-delta--positive");
+        }
+        oClone.querySelector(".outlook__employment-percentage").innerHTML = (jobOutlook.employment_change * 100).toFixed(1) + "%";
+        oClone.querySelector(".outlook__employment-growth-text").innerHTML = "employment growth (10 years)";
         oClone.querySelector(".outlook__employment-total-number").innerHTML = jobOutlook.tot_emp;
+        oClone.querySelector(".outlook__employment-total-text").innerHTML = "total employment";
         pClone.querySelector(".job-outlooks").appendChild(oClone);
       }
     } else {
-      pClone.querySelector(".job-outlooks").innerHTML = "<p>No data</p>";
+      pClone.querySelector(".career-info__job-titles").querySelector(".wysiwyg").innerHTML = "<p>No data</p>";
     }
 
     dataContainer.appendChild(pClone);

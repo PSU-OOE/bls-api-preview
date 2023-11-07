@@ -3,61 +3,52 @@
 <head>
   <meta charset="utf-8" />
   <title>BLS Data Diagnostics</title>
-  <!-- <script href="styles.scss" rel="stylesheet"></script> -->
   <script src="index.js"></script>
-  <link rel="stylesheet" href="./css/base.css"></link>
-  <link rel="stylesheet" href="./css/sprite.css"></link>
-  <link rel="stylesheet" href="./css/grid.css"></link>
-  <link rel="stylesheet" href="./css/header.css"></link>
-  <link rel="stylesheet" href="./css/outlook.css"></link>
+  <link rel="stylesheet" type="text/css" href="./css/base.css"></link>
+  <link rel="stylesheet" type="text/css" href="./css/grid.css"></link>
+  <link rel="stylesheet" type="text/css" href="./css/header.css"></link>
+  <link rel="stylesheet" type="text/css" href="./css/outlook.css"></link>
+  <link rel="stylesheet" type="text/css" href="./css/sprite.css"></link>
 </head>
 
 <body>
   <h1>BLS Data</h1>
   <div id="bls-data-container">
   </div>
+
   <template id="program-template">
     <h2 class="program-name"></h2>
     <div class="career-info">
-      <h3>Job Titles with this Degree</h3>
-      <div class="job-titles"></div>
+      <div class="career-info__job-titles">
+        <h3 class="heading heading--medium">Job Titles Related to This Degree</h3>
+        <div class="wysiwyg"></div>
+      </div>
       <h3>Employment Outlook for Occupational Fields Related to This Degree</h3>
-      <div class="job-outlooks"></div>
+      <div class="job-outlooks grid grid--three-col"></div>
     </div>
   </template>
-  <template id="outlook-template">
-    <div class="outlook">
-      <span class="outlook__title"></span>
-      <div class="outlook__employment">
-        <div class="outlook__employment-growth">
-          <div class="outlook__employment-delta"><span class="outlook__employment-percentage"></span></div>
-          <div></div>
-        </div>
-        <div class="outlook__employment-total">
-          <div class="outlook__employment-total-number"></div>
-          <div></div>
-        </div>
-      </div>
-    </div>
-  </template>
-  <template id="">
-    <div class="outlook">
-      <span class="text text--height-snug text--weight-bold"></span>
-      <div class="outlook__employment">
-        <div class="outlook__employment-growth">
-          <div class="outlook__employment-delta">
-            <span class="outlook__employment-percentage"></span>
-          </div>
-          <div class="text text--size-xsmall text--height-xsnug">employment growth (10&nbsp;years)</div>
-        </div>
-        <div class="outlook__employment-total">
-          <div class="outlook__employment-total-number"></div>
-          <div class="text text--size-xsmall text--height-xsnug">total employment</div>
-        </div>
-      </div>
-    </div>
 
+  <template id="outlook-template">
+    <div class="grid__item">
+      <div class="outlook">
+        <h4 class="heading heading--xsmall">
+          <span class="outlook__title text text--height-snug text--weight-bold"></span>
+        </h4>
+        <div class="outlook__employment">
+          <div class="outlook__employment-growth">
+            <div class="outlook__employment-delta">
+              <span class="outlook__employment-percentage"></span>
+            </div>
+            <div class="outlook__employment-growth-text text text--size-xsmall text--height-xsnug">employment growth
+              (10&nbsp;years)</div>
+          </div>
+          <div class="outlook__employment-total">
+            <div class="outlook__employment-total-number"></div>
+            <div class="outlook__employment-total-text text--size-xsmall text--height-xsnug">total employment</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </template>
 </body>
-
 </html>
