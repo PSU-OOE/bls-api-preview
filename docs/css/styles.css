@@ -1,0 +1,11 @@
+.program {
+  margin-bottom: 5rem;
+}
+
+#bls-data-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 119rem;
+  margin: auto;
+  padding: 0 4rem;
+}

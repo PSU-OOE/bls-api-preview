@@ -55,12 +55,12 @@ function organizeData(data) {
 
 // Generate the HTML
 function generatePreview() {
+  // Instantiate templates from HTML.
   const dataContainer = document.querySelector("#bls-data-container");
   const programTemplate = document.querySelector("#program-template");
   const outlookTemplate = document.querySelector("#outlook-template");
-
-  // console.log("PROGRAMS DATA\n");
-  // console.log(programs);
+  const negSpriteTemplate = document.querySelector("#positive-sprite");
+  const posSpriteTemplate = document.querySelector("#positive-sprite");
 
   // TODO: Add sorting or sort differently? Currently sorts by prospect code.
   for (program of programs) {
@@ -85,23 +85,33 @@ function generatePreview() {
     if (program.jobOutlooks.length !== 0) {
       for (jobOutlook of program.jobOutlooks) {
         let oClone = outlookTemplate.content.cloneNode(true);
+        let negSpriteClone = negSpriteTemplate.content.cloneNode(true);
+        let posSpriteClone = posSpriteTemplate.content.cloneNode(true);
+
         oClone.querySelector(".outlook__title").innerHTML = jobOutlook.occ_title;
-        // TODO: Find css for this...
+
+        // Negative / positive employment
         if (jobOutlook.employment_change < 0) {
-          oClone.querySelector(".outlook__employment-delta").classList.add(".outlook__employment-delta--negative");
+          oClone.querySelector(".outlook__employment-delta").classList.add("outlook__employment-delta--negative");
+          oClone.querySelector(".outlook__employment-delta").insertBefore(negSpriteClone, oClone.querySelector(".outlook__employment-delta").firstChild);
         } else {
-          oClone.querySelector(".outlook__employment-delta").classList.add(".outlook__employment-delta--positive");
+          oClone.querySelector(".outlook__employment-delta").classList.add("outlook__employment-delta--positive");
+          oClone.querySelector(".outlook__employment-delta").insertBefore(posSpriteClone, oClone.querySelector(".outlook__employment-delta").firstChild);
         }
+
         oClone.querySelector(".outlook__employment-percentage").innerHTML = (jobOutlook.employment_change * 100).toFixed(1) + "%";
         oClone.querySelector(".outlook__employment-growth-text").innerHTML = "employment growth (10 years)";
         oClone.querySelector(".outlook__employment-total-number").innerHTML = jobOutlook.tot_emp;
         oClone.querySelector(".outlook__employment-total-text").innerHTML = "total employment";
+
+        // Add outlook template clone to program template clone.
         pClone.querySelector(".job-outlooks").appendChild(oClone);
       }
     } else {
       pClone.querySelector(".career-info__job-titles").querySelector(".wysiwyg").innerHTML = "<p>No data</p>";
     }
 
+    // Add program template clone to container.
     dataContainer.appendChild(pClone);
   }
 }
