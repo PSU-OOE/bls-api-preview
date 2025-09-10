@@ -1,3 +1,6 @@
+# This application has been retired
+See https://github.com/psu-online-education/bls-data-conversion for the replacement.
+
 # bls-api-aws
 This repository provides an ETL process for a lambda function.
 
